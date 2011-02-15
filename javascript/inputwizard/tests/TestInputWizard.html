@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Testing edu.rutgers.ess.input.field.RadioButtonField</title>
+		<script type="text/javascript" 
+			src="../../../../../dojo/dojo.js" 
+			djConfig="parseOnLoad: true, 
+					  isDebug: true"></script>
+					  
+		<script type="text/javascript">dojo.registerModulePath("edu", "../edu");</script>
+		
+		<script type="text/javascript">
+			dojo.require("doh.runner");
+			dojo.require("dojo.robot");
+
+			dojo.require("edu.rutgers.ess.input.Form"); //done
+			dojo.require("edu.rutgers.ess.input.Navigation"); //done
+			dojo.require("edu.rutgers.ess.input.Help"); //done
+			dojo.require("edu.rutgers.ess.input.ErrorDisplayFlag"); //done
+			dojo.require("edu.rutgers.ess.input.ErrorDisplay"); //done
+			dojo.require("edu.rutgers.ess.input.ErrorArea"); //done
+			dojo.require("edu.rutgers.ess.input.DisplayArea"); //done
+			dojo.require("edu.rutgers.ess.input.Button");
+
+			dojo.require("edu.rutgers.ess.input.field.CheckBoxField");
+			dojo.require("edu.rutgers.ess.input.field.DropDownField");
+			dojo.require("edu.rutgers.ess.input.field.RadioButtonField");
+			dojo.require("edu.rutgers.ess.input.field.RegExpField");
+			dojo.require("edu.rutgers.ess.input.field.TextAreaField");
+			dojo.require("edu.rutgers.ess.input.field.TextField");
+
+			dojo.require("edu.rutgers.ess.undergraduate.field.ActivityListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.AwardListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.CurrentCoursesListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.EmploymentListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.OrganizationListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.PreviousCollegeListField");
+			dojo.require("edu.rutgers.ess.undergraduate.field.PreviousHighSchoolListField");
+			
+			dojo.addOnLoad(function(){
+				doh.register("doh.robot", 
+					[
+						{
+							name:"Click Navigation link class is current",
+							timeout:12000,	
+							runTest: function(){
+								var dohDeferred = new doh.Deferred();
+
+								var form = dijit.byId("review");
+
+								var navigation = dijit.byId("navigation");
+								var links = navigation.links;
+
+								doh.robot.mouseMoveAt(links[1],150);
+					            doh.robot.mouseClick({left:true}, 500);													
+
+					            doh.robot.sequence(function(){
+				                    if(links[1].className == "current"){
+			                            dohDeferred.callback(true);
+				                    }else{
+				                    	dohDeferred.errback(new Error("Expected current got " + links[1].className));
+				                    }
+			            		}, 50);
+								
+								return dohDeferred;
+							}
+
+						},
+						{
+							name:"Click Navigation link class is current",
+							timeout:12000,	
+							runTest: function(){
+								var dohDeferred = new doh.Deferred();
+
+								var form = dijit.byId("review");
+
+								var navigation = dijit.byId("navigation");
+								var links = navigation.links;
+
+								doh.robot.mouseMoveAt(links[0],150);
+					            doh.robot.mouseClick({left:true}, 500);													
+
+					            doh.robot.sequence(function(){
+				                    if(links[0].className == "current"){
+			                            dohDeferred.callback(true);
+				                    }else{
+				                    	dohDeferred.errback(new Error("Expected current got " + links[0].className));
+				                    }
+			            		}, 50);
+								
+								return dohDeferred;
+							}
+
+						}									
+					]
+				);
+
+				doh.run();
+			});
+
+		</script>
+		
+	</head>
+	<body>
+		<!-- edu.rutgers.ess.input.Form -->
+		<form dojoType="edu.rutgers.ess.input.Form" id="review">
+			
+			<!-- edu.rutgers.ess.input.Navigation -->
+			<ul dojoType="edu.rutgers.ess.input.Navigation" key="navigation" id="navigation">
+				<li>
+					<a name="edit.page" class="current">
+						edit
+					</a>
+				</li>
+				<li>
+					<a name="review.page" review="true">
+						review
+					</a>
+				</li>			
+			</ul>
+			<!-- END edu.rutgers.ess.input.Navigation -->
+			
+			<!-- edu.rutgers.ess.input.DisplayArea edit/review-->
+			<div dojoType="edu.rutgers.ess.input.DisplayArea" 
+				query="ds.navigation == 'edit.page' || ds.navigation == 'review.page'" 
+				disableAnimation = "true">
+					
+					<!-- edu.rutgers.ess.input.Help -->
+					<div dojoType="edu.rutgers.ess.input.Help">
+						<h3 class="first">
+							Full name
+						</h3>
+						<p>
+							Help Text!
+						</p>
+					</div>
+					<!-- END edu.rutgers.ess.input.Help -->
+					
+			</div>
+			<!-- END edu.rutgers.ess.input.DisplayArea edit/review-->
+			
+		</form>
+		<!-- END edu.rutgers.ess.input.Form -->
+			
+	</body>
+</html>

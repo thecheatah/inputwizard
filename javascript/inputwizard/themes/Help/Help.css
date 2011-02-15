@@ -1,0 +1,18 @@
+/* $Id: Help.css,v 1.6 2010/12/17 16:58:04 tako Exp $ */
+
+/* help (?) button */
+   .help {overflow:visible; float:left; margin-top:4px; z-index:999;}
+   .button_box, .button_box_activated {float:left; height:16px; width:16px; background:url(images/icons.png) -16px 0;	cursor:pointer;}
+
+/* help dialog pop-up */
+   .help .help_box {position:absolute; padding-top:4px; width:330px; z-index:999; color:#000; font:12px sans-serif;}
+
+		/* close (x) button */
+	   .help .help_box_top {float:right; overflow:visible; position:relative; z-index:1000;}
+   	.help .exit_button {cursor:pointer; background:url(images/icons.png) no-repeat 32px 0; overflow:hidden; padding-right:17px;	position:relative; z-index:1001;}
+
+      /* help content */
+   	.help .help_box_main {overflow:auto; max-height:350px; height:auto; z-index:999; float:left; border:1px solid #ccc; padding:7px 10px; background:#f5f5f5;	font:12px Verdana, sans-serif; -webkit-border-radius:3px; -moz-border-radius:3px; -o-border-radius:3px; border-radius:3px;}
+   	.help .help_box_main h3 {margin:1em 0;padding-top:1em; border-top:1px dotted #ccc;}
+   	.help .help_box_main h3.first {border:0; margin-top:0; padding-top:0;}
+   	.help .help_box_main p {margin:1em 0; color:#555; font-size:11px;}

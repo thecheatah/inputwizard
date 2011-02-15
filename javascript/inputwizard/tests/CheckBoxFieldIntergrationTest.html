@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Testing edu.rutgers.ess.input.field.RadioButtonField</title>
+		<script type="text/javascript" 
+			src="../../../../../dojo/dojo.js" 
+			djConfig="parseOnLoad: true, 
+					  isDebug: true"></script>
+					  
+		<script type="text/javascript">dojo.registerModulePath("edu", "../edu");</script>
+		
+		<script type="text/javascript">
+			dojo.require("doh.runner");
+
+			dojo.require("edu.rutgers.ess.input.Form");
+
+			dojo.require("edu.rutgers.ess.input.field.CheckBoxField");
+			
+			dojo.addOnLoad(function(){
+				doh.register("CheckBoxFieldPage", 
+					[
+						{
+							name:"Test readValueFromDataStore(), With Value:1, Assert fieldInput attribute checked is string 'true'",
+							timeout:12000,	
+							runTest: function(){
+								var dohDeferred = new doh.Deferred();
+
+								var form = dijit.byId("review");
+								var dataStore = form.dataStore;
+								var checkBoxField = dijit.byId("CheckBoxField");
+
+								checkBoxField.
+								
+								return dohDeferred;
+							}
+
+						}								
+					]
+				);
+
+				doh.run();
+			});
+
+		</script>
+		
+	</head>
+	<body>
+		
+		<form dojoType="edu.rutgers.ess.input.Form" id="review">
+			
+			<input id="CheckBoxField" dojoType="edu.rutgers.ess.input.field.CheckBoxField" key="TestKey"></input>
+			
+		</form>
+			
+	</body>
+</html>

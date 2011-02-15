@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Testing edu.rutgers.ess.input.field.RadioButtonField</title>
+		<script type="text/javascript" 
+			src="../../../../../dojo/dojo.js" 
+			djConfig="parseOnLoad: true, 
+					  isDebug: true"></script>
+					  
+		<script type="text/javascript">dojo.registerModulePath("edu", "../edu");</script>
+		
+		<script type="text/javascript">
+			dojo.require("doh.runner");
+
+			dojo.require("edu.rutgers.ess.input.Form");
+
+			dojo.require("edu.rutgers.ess.input.field.DropDownField");
+			
+			dojo.addOnLoad(function(){
+				doh.register("DropDownFieldIntergration", 
+					[
+						{
+							name:"Testing startup()",
+							timeout:500,	
+							runTest: function(t){
+								var dohDeferred = new doh.Deferred();
+								
+								var form = dijit.byId("form");
+								var dropDownField = dijit.byId("DropDownField");
+
+								var dataStore = form.dataStore;
+
+								if(dataStore.getValue('TestKey') == dropDownField.value &&
+										dataStore.getValue('TestKey') == dropDownField.containerNode.value){
+
+									dohDeferred.callback(true);
+								} else {
+									dohDeferred.errback(new Error());
+								}
+								
+								return dohDeferred;
+							}
+
+						},
+
+						{
+							name:"Testing readValueFromDataStore() dropDownField.value",
+							timeout:500,	
+							runTest: function(t){
+								var dohDeferred = new doh.Deferred();
+								
+								var form = dijit.byId("form");
+								var dropDownField = dijit.byId("DropDownField");
+
+								var dataStore = form.dataStore;
+								
+								dataStore.setValues({TestKey : "TopOption"});
+
+								dropDownField.readValueFromDataStore(dataStore);
+								
+								if("TopOption" == dropDownField.value){
+
+									dohDeferred.callback(true);
+								} else {
+									dohDeferred.errback("\n\ndataStore.getValue('TestKey') = " + dataStore.getValue('TestKey') +
+														"\ndrowDownField.value = " + dropDownField.value);
+								}
+								
+								return dohDeferred;
+							}
+						},
+
+						{
+							name:"Testing readValueFromDataStore() dropDownField.containerNode.value",
+							timeout:500,	
+							runTest: function(t){
+								var dohDeferred = new doh.Deferred();
+								
+								var form = dijit.byId("form");
+								var dropDownField = dijit.byId("DropDownField");
+
+								var dataStore = form.dataStore;
+								
+								dataStore.setValues({TestKey : "MiddleOption"});
+
+								dropDownField.readValueFromDataStore(dataStore);
+								
+								if(doh.assertEqual("MiddleOption",dropDownField.containerNode.value)){
+									dohDeferred.callback(true);
+								} else {
+									dohDeferred.errback("\n\ndataStore.getValue('TestKey') = " + dataStore.getValue('TestKey') +
+														"\ndrowDownField.containerNode.value = " + dropDownField.containerNode.value);
+								}
+								
+								return dohDeferred;
+							}
+						},
+
+						{
+							name:"Testing readValueFromDataStore() dataStore value is null",
+							timeout:500,	
+							runTest: function(t){
+								var dohDeferred = new doh.Deferred();
+								
+								var form = dijit.byId("form");
+								var dropDownField = dijit.byId("DropDownField");
+
+								var dataStore = form.dataStore;
+								
+								dataStore.setValues({TestKey : null});
+
+								dropDownField.readValueFromDataStore(dataStore);
+								
+								if(doh.assertEqual("MiddleOption",dropDownField.containerNode.value)){
+									dohDeferred.callback(true);
+								} else {
+									dohDeferred.errback("\n\ndataStore.getValue('TestKey') = " + dataStore.getValue('TestKey') +
+														"\ndrowDownField.containerNode.value = " + dropDownField.containerNode.value);
+								}
+								
+								return dohDeferred;
+							}
+						}
+														
+					]
+				);
+
+				doh.run();
+			});
+
+		</script>
+		
+	</head>
+	<body>
+		
+		<form dojoType="edu.rutgers.ess.input.Form" id="form">
+			
+			<select id="DropDownField" 
+				   dojoType="edu.rutgers.ess.input.field.DropDownField" 
+				   key="TestKey"
+				   value ="MiddleOption">
+				
+				<option value="TopOption">top</option>
+				<option value="MiddleOption">middle</option>
+				<option value="BottomOption">bottom</option>   
+		   		
+		    </select>
+			
+		</form>
+			
+	</body>
+</html>

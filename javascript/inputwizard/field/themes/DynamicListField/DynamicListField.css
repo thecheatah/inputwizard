@@ -1,0 +1,27 @@
+.dynamicListButton, .dynamicListButton:visited{
+	position:relative; 
+	display:inline-block; 
+	Xmargin:0 .5em 0 11em; 
+	border:0; 
+	border-bottom:1px solid rgba(0,0,0,0.25); 
+	padding:3px 7px; 
+	font:400 11px verdana,sans-serif; 
+	color:#fff; 
+	text-decoration:none; 
+	Xletter-spacing:1px; 
+	background:#999; 
+	-moz-border-radius:5px; 
+	-webkit-border-radius:5px; 
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.25); 
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.25); 
+	text-shadow:0 -1px 1px rgba(0,0,0,0.25); 
+	cursor:pointer;
+}
+
+.dynamicListButton:hover, .dynamicListButton:focus{
+	background-color:#888;
+}
+
+.dynamicListButton:active{
+	top:1px;
+}

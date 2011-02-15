@@ -1,0 +1,25 @@
+.nav {
+  color: white;
+  background-color: black;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.nav .current {
+  color: #d21034;
+}
+.nav li {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  float: left;
+  margin-right: 24px;
+}
+.nav a, .nav a:visited {
+  color: inherit;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+.nav a:hover {
+  text-decoration: underline;
+}
