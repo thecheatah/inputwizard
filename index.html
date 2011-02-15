@@ -1,1 +1,26 @@
-My GitHub Page
+<html>
+<head>
+<title>Input Wizard Documentation</title>
+</head>
+<body style="width: 800px">
+<h1>Input Wizard Source Code Documentation</h1>
+<h2>About</h2>
+This document will talk about the how and why this project is architected the way it is. The input wizard framework was architected by <a href="https://github.com/thecheatah">Ravneet Singh</a>.
+<h2>General Concepts</h2>
+The input wizard framework uses the following key design patterns:
+<ul>
+  <li>
+    <b>Dependency Injection/Inversion of control</b><br/>
+    The Form Widget is responsible for implementing the IoC. It looks for widgets which implement specific interfaces and ties them together with the rest of the system use these interfaces or abstract classes.<br/>We use the following Interfaces or Abstract Classes:
+    <ul>
+      <li>DataErrorChangeDelegate</li>
+      <li>DataValueChangeDelegate</li>
+      <li>DisplayAreaVisibilityListener</li>
+      <li>DisplayModeListener</li>
+      <li>Field</li>
+    </ul>
+  </li>
+  <li>Delegation Model to decouple components</li>
+</ul>
+</body>
+</html>
