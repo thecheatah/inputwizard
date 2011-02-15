@@ -1,0 +1,22 @@
+<html>
+<head>
+<script src="javascript/dojo/dojo.js" djConfig="parseOnLoad: true, isDebug: true"></script>
+<script>
+dojo.require("inputwizard.Form");
+dojo.require("inputwizard.field.DropDownField");
+dojo.require("inputwizard.DisplayArea");
+</script>
+</head>
+<body>
+
+  <form dojoType="inputwizard.Form">
+    <select dojoType="inputwizard.field.DropDownField" key="dropdown">
+      <option value="o1">Option 1</option>
+      <option value="o2">Option 2</option>
+    </select>
+    <div dojoType="inputwizard.DisplayArea" query="ds.dropdown == 'o1'">Option 1 is selected!</div>
+    <div dojoType="inputwizard.DisplayArea" query="ds.dropdown == 'o2'">Option 2 is selected!</div>
+  </form>
+
+</body>
+</html>
