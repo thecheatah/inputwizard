@@ -4,18 +4,47 @@
 <script>
 dojo.require("inputwizard.Form");
 dojo.require("inputwizard.field.DropDownField");
+dojo.require("inputwizard.field.CheckBoxField");
+dojo.require("inputwizard.field.TextField");
+dojo.require("inputwizard.field.RadioButtonField");
 dojo.require("inputwizard.DisplayArea");
 </script>
+<style>
+
+.PlaceHolderTextVisible {color: gray;}
+
+</style>
 </head>
 <body>
 
   <form dojoType="inputwizard.Form">
+    <b>Example of a dropdown:</b><br/>
     <select dojoType="inputwizard.field.DropDownField" key="dropdown">
       <option value="o1">Option 1</option>
       <option value="o2">Option 2</option>
     </select>
     <div dojoType="inputwizard.DisplayArea" query="ds.dropdown == 'o1'">Option 1 is selected!</div>
     <div dojoType="inputwizard.DisplayArea" query="ds.dropdown == 'o2'">Option 2 is selected!</div>
+    <br/>
+    <b>Example of a checkbox:</b><br/>
+    
+    <label><input dojoType="inputwizard.field.CheckBoxField" key="checkbox"/> Check Me!</label>
+    <div dojoType="inputwizard.DisplayArea" query="ds.checkbox == '1'">
+      You checked me!<br/>
+
+	    <br/>
+	    <b>Example of a text field:</b><br/>
+	    <input dojoType="inputwizard.field.TextField" key="textfield" placeHolderText="Type 'Yes' for a secret!"/>
+	    <div dojoType="inputwizard.DisplayArea" style="width: 300px" query="(ds.textfield).toLowerCase() == 'yes'"><i>The 'yes' value can be made case sensitive or case insensitive! You can execute any valid javascript boolean expression in the query! Look at the source for the magic.</i></div>
+    </div>
+
+    <br/>
+    <b>Example of a radio button:</b><br/>
+
+    <label><input dojoType="inputwizard.field.RadioButtonField" key="radiobutton" value="v1" checked="true"/>Value 1</label>
+    <label><input dojoType="inputwizard.field.RadioButtonField" key="radiobutton" value="v2"/>Value 2</label>
+    <div dojoType="inputwizard.DisplayArea" query="ds.radiobutton == 'v1'">Value 1 is selected!</div>
+    <div dojoType="inputwizard.DisplayArea" query="ds.radiobutton == 'v2'">Value 2 is selected!</div>
   </form>
 
 </body>
