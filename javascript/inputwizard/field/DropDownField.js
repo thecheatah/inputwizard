@@ -39,9 +39,11 @@ dojo.declare(
 		startup : function(){
 			
 			this.inherited(arguments);
-			
-			this.containerNode.value = this.value;
-			this.valuesChanged();
+
+      this.containerNode.value = this.value;
+      this.containerNode.name = this.key;
+
+      this.valuesChanged();
 			
 			var parent = this;
 			this.containerNode.onchange=function(){
